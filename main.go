@@ -44,7 +44,7 @@ type Todo struct {
 }
 
 func (Todo) TableName() string {
-	return "todo"
+	return "todogr"
 }
 
 type TodoCreate struct {
