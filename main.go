@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	
+
 	todotransport "todo-app/module/transport"
 
 	"github.com/gin-gonic/gin"
@@ -28,17 +28,16 @@ func main() {
 		todo := v1.Group("/todo")
 		{
 			todo.POST("/create", todotransport.CreateTodo(db))
-			// todo.GET("/:id", getTodo(db))
-			// todo.GET("", getTodos(db))
-			// todo.PUT("/update/:id", updateTodo(db))
+			todo.GET("/:id", todotransport.FindTodo(db))
+			todo.GET("", todotransport.GetTodos(db))
+			todo.PUT("/:id", todotransport.UpdateTodo(db))
+			todo.DELETE("/:id", todotransport.DeleteTodo(db))
+			todo.PUT("/delete/:id", todotransport.UpdateTodoAsDelete(db))
 			// todo.PUT("/delete/:id", deleteTodo(db))
 		}
 	}
 	router.Run(":3000")
 }
-
-
-
 
 // func getTodo(db *gorm.DB) gin.HandlerFunc {
 // 	return func(ctx *gin.Context) {

@@ -7,10 +7,10 @@ import (
 )
 
 type Todo struct {
-	Id        int        `json:"id" gorm:"id;"`
-	Title     string     `json:"title" gorm:"title;"`
-	Status    string     `json:"status" gorm:"status;"`
-	Deleted   bool       `json:"deleted" gorm:"deleted"`
+	Id        int        `json:"id" gorm:"column:id;"`
+	Title     string     `json:"title" gorm:"column:title;"`
+	Status    string     `json:"status" gorm:"column:status;"`
+	Deleted   bool       `json:"deleted" gorm:"column:deleted"`
 	CreatedAt *time.Time `json:"created_at" gorm:"column:created_at;"`
 	UpdatedAt *time.Time `json:"updated_at" gorm:"column:updated_at;"`
 }
@@ -20,15 +20,15 @@ func (Todo) TableName() string {
 }
 
 type TodoCreate struct {
-	Id        int        `json:"id" gorm:"id;"`
-	Title     string     `json:"title" gorm:"title;"`
+	Id        int        `json:"id" gorm:"column:id;"`
+	Title     string     `json:"title" gorm:"column:title;"`
 	CreatedAt *time.Time `json:"created_at" gorm:"column:created_at;"`
 	UpdatedAt *time.Time `json:"updated_at" gorm:"column:updated_at;"`
 }
 
 type TodoUpdate struct {
-	Id        *int       `json:"id" gorm:"id;"`
-	Title     *string    `json:"title" gorm:"title;"`
+	Id        *int       `json:"id" gorm:"column:id;"`
+	Title     *string    `json:"title" gorm:"column:title;"`
 	Deleted   bool       `json:"deleted" gorm:"deleted;"`
 	UpdatedAt *time.Time `json:"updated_at" gorm:"column:updated_at;"`
 }
